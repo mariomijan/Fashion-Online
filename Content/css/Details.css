@@ -1,0 +1,102 @@
+﻿body {
+}
+
+
+
+.Section-top {
+    background-color: #b7a398;
+    width: 960px;
+    height: 80px;
+}
+
+.Top-product-name {
+    float: left;
+    margin-left: -381px;
+    margin-top: 13px;
+    font-family: 'bebasregular';
+    font-size: 16px;
+
+}
+
+section table {
+    margin-top: 40px;
+
+}
+
+.Product-name-label {
+    float:left;
+    margin-top: -135px;
+    margin-left: 40px;  
+    font-family: 'bebasregular';
+    font-size: 16px;
+}
+
+.Description-label {
+    float: left;
+    margin-top: -90px;
+    margin-left: -63px;
+    word-wrap: normal;
+
+}
+
+section article {
+    float:left;
+    width: 740px;
+    height: 200px;
+    margin-left: 200px;
+    margin-top: 50px;
+    background-color: white;
+}
+
+.Bottom-description {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+
+}
+
+#Description {
+    font-family: 'bebasregular';
+    color: #aa0000;
+    width: 200px;
+    height: 40px;
+    float: left;
+    margin-left: -200px;
+    margin-top: 25px;
+    background-color: white;
+    text-align: center;
+
+
+}
+
+#Review {
+    font-family: 'bebasregular';
+    width: 200px;
+    height: 40px;
+    float: left;
+    margin-left: -200px;
+    margin-top: 75px;
+    background-color: #d8d8d8;
+    text-align: center;
+
+
+}
+
+#Description span {
+    float: left;
+    margin-top: 13px;
+    margin-left: 30px;
+}
+
+#Review span {
+    float: left;
+    margin-top: 13px;
+    margin-left: 30px;
+}
+
+/*Collection details*/
+#lsCollectionDetails {
+    float: left;
+    margin-top: -50px;
+
+}

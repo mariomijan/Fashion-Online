@@ -1,0 +1,69 @@
+﻿body {
+}
+
+.Section-top {
+    background-color: #b7a398;
+    width: 960px;
+    height: 80px;
+}
+
+.Top-product-name {
+    float: left;
+    margin-left: -381px;
+    margin-top: 13px;
+    font-family: 'bebasregular';
+    font-size: 16px;
+}
+
+.Section-top-bottom-banner {
+    float: left;
+    margin-top: 43px;
+
+}
+.Retailer-section-left {
+   float: left;
+   margin-top: 116px;
+   margin-left: -411px;
+}
+
+
+.Retailer-section-right {
+    float: right;
+    margin-right: -705px;  
+    width: 530px;
+    margin-top: -350px;
+}
+
+.Retailer-heading {
+    font-family: 'bebasregular';
+    font-size: 16px;
+
+}
+
+.Retailer-information {
+    font-family: 'bebasregular';
+    font-size: 16px;
+
+}
+
+.Address-labels {
+    font-family: 'bebasregular';
+    font-size: 16px;
+
+}
+
+.Map {
+    width: 530px;
+    margin-top: 15px;
+    
+}
+
+.Bottom-section {
+    width: 960px;
+    height: 200px;
+    position: absolute;
+    background-color: white;
+    font-size: 12px;
+    margin-top: 830px;
+}
+

@@ -1,0 +1,41 @@
+﻿body {
+}
+
+section h1 {
+    font-family: 'bebasregular';
+    font-size: 16px;
+    float: left;
+    
+
+}
+
+section h6 {
+    font-size: 12px;
+    float: left;
+    color: #767676;
+    font-size: 14px;  
+    margin-top: 40px; 
+    margin-left: -119px;    
+
+} 
+
+#latest-underline {
+    float: left;
+    margin-top: -8px;
+
+}
+
+.top-image {
+    width: 695px;
+}
+
+#latest-repeater {
+    float: left;
+    margin-top: 25px;
+}
+
+.Read-more {
+        color: #aa0000;
+
+
+}

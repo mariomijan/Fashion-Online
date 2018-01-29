@@ -1,0 +1,14 @@
+﻿body {
+}
+
+.News-subtitle {
+    float: left;
+    margin-left: -38px;
+
+}
+
+.paging {
+    float:left;
+    margin-top: 10px;
+    margin-left: -18px;
+}

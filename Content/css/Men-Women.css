@@ -1,0 +1,56 @@
+﻿body {
+}
+
+/*Men-Women*/
+section h1  {
+    font-family: 'bebasregular';
+    font-size: 16px;
+    float: left;
+    margin-top: 0px;
+
+}
+
+.Read-more {
+    color: #aa0000;
+
+}
+
+.Read-more:hover {
+    text-decoration: none;
+
+}
+
+
+/*Men*/
+section h6  {
+    font-size: 12px;
+    float: left;
+    margin-top: 0px;
+    color: #767676;
+    font-size: 14px;    
+    margin-left: -82px;
+}
+
+#Men-underline {
+    float: left;
+    margin-top: -8px;
+
+}
+
+.Men-images {
+    position: relative;
+}
+
+/*Women*/
+#Women-underline {
+    float: left;
+    margin-top: -8px;
+
+}
+
+.Women-subtitle {
+    float: left;
+    margin-left: -103px;
+
+}
+
