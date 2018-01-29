@@ -1,0 +1,167 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout-right-content.master.cs" Inherits="Svendeproeve.Layout_right_content" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Fashion Online</title>
+
+    <meta name="description" content="Fashion online, køb tøj til begge køn" />
+    <meta name="keywords" content="Fashion,Men,Women" />
+    <meta name="DC.title" content="Fashion Online" />
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Head" runat="server" />
+    <link href="Content/css/Layouts.css" rel="stylesheet" />
+    <link href="Scripts/webfontkit-BEBAS/stylesheet.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div id="Wrapper">
+                <header>
+                    <%-- Top menu --%>
+                    <div id="Top-menu">
+                        <ul>
+                            <li><a href="Retailer.aspx">Find Retailer</a></li>
+                            <li><a href="News.aspx">News</a></li>
+                            <li><a href="Contact.aspx">Contact</a></li>
+                        </ul>
+
+                        <table id="Sign-in-table">
+                            <tr>
+                                <td>
+                                    <asp:Label Text="Sign In" runat="server" CssClass="Sign-in-label" /></td>
+                                <td>
+                                    <asp:TextBox ID="txtLoginName" runat="server" CssClass="Sign-in-textboxes" placeholder="Username" />
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtLoginPass" runat="server" TextMode="Password" CssClass="Sign-in-textboxes" placeholder="Password" />
+                                </td>
+                                <td>
+                                    <asp:ImageButton ID="btnLogin" CssClass="btnLogin" ImageUrl="Content/images/signinbtn.gif" OnClientClick="btnLogin();" runat="server" OnClick="btnLogin_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <img class="logo" src="Content/images/logo.gif" />
+
+                    <%-- Undermenu --%>
+                </header>
+
+                <nav>
+                    <ul>
+                        <li><a href="Default.aspx">HOME</a></li>
+                        <li><a href="Men.aspx">MEN</a></li>
+                        <li><a href="Women.aspx">WOMEN</a></li>
+                        <li><a href="Collections.aspx">COLLECTIONS</a></li>
+                    </ul>
+
+
+                    <%-- Search --%>
+
+                    <div class="input-group Search">
+                        <input type="text" id="txtSearch" runat="server" class="form-control" placeholder="Search.." name="" />
+                        <div class="input-group-btn">
+                            <button id="btnSearch" class="btn btn-default" onserverclick="btnSearch_ServerClick" runat="server" onclick="SearchClick();" type="submit"><i class="glyphicon glyphicon-search Glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </nav>
+
+                <section id="section-right-content">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder_Section" runat="server" />
+                </section>
+
+                <article>
+                    <div id="top-collection">
+                        <a href="Collections.aspx">
+                            <img src="Content/images/Untitled-2.gif" width="250" height="250" /></a>
+                    </div>
+                    <div id="center-collection">
+                        <a href="Women.aspx">
+                            <img src="Content/images/Untitled-23.gif" width="250" height="100" /></a>
+                    </div>
+                    <div id="bottom-collection">
+                        <a href="Women.aspx">
+                            <img src="Content/images/Untitled-12.gif" width="250" height="120" /></a>
+                    </div>
+                    <div id="newsletter">
+                        <p>SIGN UP TO OUR NEWSLETTER</p>
+                        <br />
+                        <div id="Newsletter-underline">____________________________</div>
+                        <table id="Signup-table">
+                            <tr>
+                                <td>
+                                    <asp:Label Text="Email" CssClass="Signup-labels" runat="server" /></td>
+                                <td>
+                                    <asp:TextBox ID="txtEmail" CssClass="txtSignup-textboxes" runat="server" /></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label Text="Name" CssClass="Signup-labels" runat="server" /></td>
+                                <td>
+                                    <asp:TextBox ID="txtName" CssClass="txtSignup-textboxes" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Button ID="btnSubscribe" CssClass="btnSignup" Text="Signup" runat="server" OnClientClick="Subscribe();" OnClick="btnSubscribe_Click" />
+                                </td>
+                                <td>
+                                    <asp:Literal ID="ltStatus" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+
+                <%-- Footer --%>
+                <footer id="Top-footer-right-content">
+                    <div id="headline">OTHER &nbsp PRODUCTS</div>
+                    <br />
+                    <br />
+                    <div id="headline-bottom">Check our all latest products in this section</div>
+                    <br />
+                    <br />
+                    <div id="underline">___________________________________________________________________________________________________________________</div>
+
+
+                    <article class="Slider col-lg-12">
+                        <asp:ImageButton ID="ImgLeft" CssClass="btnleft" ImageUrl="Content/images/left.gif" OnClientClick="Slider();" runat="server" />
+                        <img src="" id="image" class="col-lg-2"  width="200" height="100" />
+                        <img src="" id="image2" class="col-lg-2" width="200" height="100"/>
+                        <img src="" id="image3" class="col-lg-2" width="200" height="100" />
+                        <img src="" id="image4" class="col-lg-2" width="200" height="100" />
+                        <img src="" id="image5" class="col-lg-2" width="200" height="100" />
+                     <asp:ImageButton ID="ImgRight" CssClass="btnright" ImageUrl="Content/images/right.gif" OnClientClick="Slider();" runat="server" />
+                    </article>
+                </footer>
+
+                <footer id="Bottom-footer">
+                    <ul>
+                        <li><a href="Default.aspx">Home</a></li>
+                        <li><a href="Men.aspx">Mens</a></li>
+
+
+                        <li><a href="Women.aspx">Women</a></li>
+
+
+                        <li><a href="Collections.aspx">Collections</a></li>
+
+
+                        <li><a href="News.aspx">News</a></li>
+
+
+                        <li><a href="Contact.aspx">Contact</a></li>
+
+                    </ul>
+                    <p />
+                    <p id="copyright">Copyright © 2014. All Rights Reserved by <a href="Default.aspx">Fashion Online.</a></p>
+                    <img class="footer-logo" src="Content/images/logobottom.gif" />
+                </footer>
+            </div>
+        </div>
+    </form>
+    <script src="Scripts/JavaScript-style.js"></script>
+</body>
+</html>
