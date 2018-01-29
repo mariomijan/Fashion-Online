@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3aa60c00866143839d0c8bcd6d95c561" Name="Diagram1">
+        <EntityTypeShape EntityType="Sv_EksamenModel.Collection" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Contact" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Gender" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.News" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Newsletter" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Product" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Retailer" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Role" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="Sv_EksamenModel.Userlogin" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="Sv_EksamenModel.FK_Product_Collection" />
+        <AssociationConnector Association="Sv_EksamenModel.FK_Product_Gender" />
+        <AssociationConnector Association="Sv_EksamenModel.FK_Product_Retailer" />
+        <AssociationConnector Association="Sv_EksamenModel.FK_Product_Userlogin" />
+        <AssociationConnector Association="Sv_EksamenModel.FK_Userlogin_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

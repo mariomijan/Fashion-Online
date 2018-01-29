@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Sv_EksamenModelStoreContainer" CdmEntityContainer="Sv_Eksamen_Entities">
+    <EntitySetMapping Name="Collection">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Collection">
+        <MappingFragment StoreEntitySet="Collection">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="CollectionName" ColumnName="CollectionName" />
+          <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="NewsImage" ColumnName="NewsImage" />
+          <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
+          <ScalarProperty Name="NewsName" ColumnName="NewsName" />
+          <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Newsletter">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Newsletter">
+        <MappingFragment StoreEntitySet="Newsletter">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NewsletterID" ColumnName="NewsletterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Retailer">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Retailer">
+        <MappingFragment StoreEntitySet="Retailer">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Userlogin">
+      <EntityTypeMapping TypeName="Sv_EksamenModel.Userlogin">
+        <MappingFragment StoreEntitySet="Userlogin">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

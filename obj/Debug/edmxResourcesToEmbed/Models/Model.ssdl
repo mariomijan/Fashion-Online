@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sv_EksamenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="CollectionID" />
+    </Key>
+    <Property Name="CollectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollectionName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GenderName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NewsDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NewsImage" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Newsletter">
+    <Key>
+      <PropertyRef Name="NewsletterID" />
+    </Key>
+    <Property Name="NewsletterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RetailerID" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="GenderID" Type="int" />
+    <Property Name="CollectionID" Type="int" />
+  </EntityType>
+  <EntityType Name="Retailer">
+    <Key>
+      <PropertyRef Name="RetailerID" />
+    </Key>
+    <Property Name="RetailerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Zipcode" Type="int" Nullable="false" />
+    <Property Name="City" Type="nvarchar(max)" />
+    <Property Name="Country" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="Logo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Userlogin">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Product_Collection">
+    <End Role="Collection" Type="Self.Collection" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="CollectionID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CollectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Retailer">
+    <End Role="Retailer" Type="Self.Retailer" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retailer">
+        <PropertyRef Name="RetailerID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="RetailerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Userlogin">
+    <End Role="Userlogin" Type="Self.Userlogin" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userlogin">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Userlogin_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Userlogin" Type="Self.Userlogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Userlogin">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Sv_EksamenModelStoreContainer">
+    <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Newsletter" EntityType="Self.Newsletter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Retailer" EntityType="Self.Retailer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Userlogin" EntityType="Self.Userlogin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Product_Collection" Association="Self.FK_Product_Collection">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Gender" Association="Self.FK_Product_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Retailer" Association="Self.FK_Product_Retailer">
+      <End Role="Retailer" EntitySet="Retailer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Userlogin" Association="Self.FK_Product_Userlogin">
+      <End Role="Userlogin" EntitySet="Userlogin" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Userlogin_Role" Association="Self.FK_Userlogin_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Userlogin" EntitySet="Userlogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

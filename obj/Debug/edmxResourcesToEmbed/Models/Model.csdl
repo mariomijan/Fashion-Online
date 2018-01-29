@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sv_EksamenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Sv_Eksamen_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Collection" EntityType="Sv_EksamenModel.Collection" />
+    <EntitySet Name="Contact" EntityType="Sv_EksamenModel.Contact" />
+    <EntitySet Name="Gender" EntityType="Sv_EksamenModel.Gender" />
+    <EntitySet Name="News" EntityType="Sv_EksamenModel.News" />
+    <EntitySet Name="Newsletter" EntityType="Sv_EksamenModel.Newsletter" />
+    <EntitySet Name="Product" EntityType="Sv_EksamenModel.Product" />
+    <EntitySet Name="Retailer" EntityType="Sv_EksamenModel.Retailer" />
+    <EntitySet Name="Role" EntityType="Sv_EksamenModel.Role" />
+    <EntitySet Name="Userlogin" EntityType="Sv_EksamenModel.Userlogin" />
+    <AssociationSet Name="FK_Product_Collection" Association="Sv_EksamenModel.FK_Product_Collection">
+      <End Role="Collection" EntitySet="Collection" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Gender" Association="Sv_EksamenModel.FK_Product_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Retailer" Association="Sv_EksamenModel.FK_Product_Retailer">
+      <End Role="Retailer" EntitySet="Retailer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Userlogin" Association="Sv_EksamenModel.FK_Product_Userlogin">
+      <End Role="Userlogin" EntitySet="Userlogin" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Userlogin_Role" Association="Sv_EksamenModel.FK_Userlogin_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Userlogin" EntitySet="Userlogin" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="CollectionID" />
+    </Key>
+    <Property Name="CollectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Collection" FromRole="Collection" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Gender" FromRole="Gender" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewsName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Newsletter">
+    <Key>
+      <PropertyRef Name="NewsletterID" />
+    </Key>
+    <Property Name="NewsletterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RetailerID" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="GenderID" Type="Int32" />
+    <Property Name="CollectionID" Type="Int32" />
+    <NavigationProperty Name="Collection" Relationship="Sv_EksamenModel.FK_Product_Collection" FromRole="Product" ToRole="Collection" />
+    <NavigationProperty Name="Gender" Relationship="Sv_EksamenModel.FK_Product_Gender" FromRole="Product" ToRole="Gender" />
+    <NavigationProperty Name="Retailer" Relationship="Sv_EksamenModel.FK_Product_Retailer" FromRole="Product" ToRole="Retailer" />
+    <NavigationProperty Name="Userlogin" Relationship="Sv_EksamenModel.FK_Product_Userlogin" FromRole="Product" ToRole="Userlogin" />
+  </EntityType>
+  <EntityType Name="Retailer">
+    <Key>
+      <PropertyRef Name="RetailerID" />
+    </Key>
+    <Property Name="RetailerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Zipcode" Type="Int32" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Retailer" FromRole="Retailer" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Userlogin" Relationship="Sv_EksamenModel.FK_Userlogin_Role" FromRole="Role" ToRole="Userlogin" />
+  </EntityType>
+  <EntityType Name="Userlogin">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Userlogin" FromRole="Userlogin" ToRole="Product" />
+    <NavigationProperty Name="Role" Relationship="Sv_EksamenModel.FK_Userlogin_Role" FromRole="Userlogin" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Product_Collection">
+    <End Type="Sv_EksamenModel.Collection" Role="Collection" Multiplicity="0..1" />
+    <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Collection">
+        <PropertyRef Name="CollectionID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CollectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Gender">
+    <End Type="Sv_EksamenModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Retailer">
+    <End Type="Sv_EksamenModel.Retailer" Role="Retailer" Multiplicity="0..1" />
+    <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Retailer">
+        <PropertyRef Name="RetailerID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="RetailerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Userlogin">
+    <End Type="Sv_EksamenModel.Userlogin" Role="Userlogin" Multiplicity="0..1" />
+    <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userlogin">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Userlogin_Role">
+    <End Type="Sv_EksamenModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="Sv_EksamenModel.Userlogin" Role="Userlogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="Userlogin">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

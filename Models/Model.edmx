@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Sv_EksamenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="CollectionID" />
+          </Key>
+          <Property Name="CollectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollectionName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewsDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewsImage" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="NewsletterID" />
+          </Key>
+          <Property Name="NewsletterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RetailerID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="GenderID" Type="int" />
+          <Property Name="CollectionID" Type="int" />
+        </EntityType>
+        <EntityType Name="Retailer">
+          <Key>
+            <PropertyRef Name="RetailerID" />
+          </Key>
+          <Property Name="RetailerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Zipcode" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Userlogin">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="LoginName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Product_Collection">
+          <End Role="Collection" Type="Self.Collection" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collection">
+              <PropertyRef Name="CollectionID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CollectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Retailer">
+          <End Role="Retailer" Type="Self.Retailer" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retailer">
+              <PropertyRef Name="RetailerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="RetailerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Userlogin">
+          <End Role="Userlogin" Type="Self.Userlogin" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userlogin">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Userlogin_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Userlogin" Type="Self.Userlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Userlogin">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sv_EksamenModelStoreContainer">
+          <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newsletter" EntityType="Self.Newsletter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Retailer" EntityType="Self.Retailer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Userlogin" EntityType="Self.Userlogin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Product_Collection" Association="Self.FK_Product_Collection">
+            <End Role="Collection" EntitySet="Collection" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Gender" Association="Self.FK_Product_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Retailer" Association="Self.FK_Product_Retailer">
+            <End Role="Retailer" EntitySet="Retailer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Userlogin" Association="Self.FK_Product_Userlogin">
+            <End Role="Userlogin" EntitySet="Userlogin" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Userlogin_Role" Association="Self.FK_Userlogin_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Userlogin" EntitySet="Userlogin" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sv_EksamenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Sv_Eksamen_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Collection" EntityType="Sv_EksamenModel.Collection" />
+          <EntitySet Name="Contact" EntityType="Sv_EksamenModel.Contact" />
+          <EntitySet Name="Gender" EntityType="Sv_EksamenModel.Gender" />
+          <EntitySet Name="News" EntityType="Sv_EksamenModel.News" />
+          <EntitySet Name="Newsletter" EntityType="Sv_EksamenModel.Newsletter" />
+          <EntitySet Name="Product" EntityType="Sv_EksamenModel.Product" />
+          <EntitySet Name="Retailer" EntityType="Sv_EksamenModel.Retailer" />
+          <EntitySet Name="Role" EntityType="Sv_EksamenModel.Role" />
+          <EntitySet Name="Userlogin" EntityType="Sv_EksamenModel.Userlogin" />
+          <AssociationSet Name="FK_Product_Collection" Association="Sv_EksamenModel.FK_Product_Collection">
+            <End Role="Collection" EntitySet="Collection" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Gender" Association="Sv_EksamenModel.FK_Product_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Retailer" Association="Sv_EksamenModel.FK_Product_Retailer">
+            <End Role="Retailer" EntitySet="Retailer" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Userlogin" Association="Sv_EksamenModel.FK_Product_Userlogin">
+            <End Role="Userlogin" EntitySet="Userlogin" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Userlogin_Role" Association="Sv_EksamenModel.FK_Userlogin_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Userlogin" EntitySet="Userlogin" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="CollectionID" />
+          </Key>
+          <Property Name="CollectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollectionName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Collection" FromRole="Collection" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderID" />
+          </Key>
+          <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenderName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Gender" FromRole="Gender" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="NewsID" />
+          </Key>
+          <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewsImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="NewsletterID" />
+          </Key>
+          <Property Name="NewsletterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RetailerID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="GenderID" Type="Int32" />
+          <Property Name="CollectionID" Type="Int32" />
+          <NavigationProperty Name="Collection" Relationship="Sv_EksamenModel.FK_Product_Collection" FromRole="Product" ToRole="Collection" />
+          <NavigationProperty Name="Gender" Relationship="Sv_EksamenModel.FK_Product_Gender" FromRole="Product" ToRole="Gender" />
+          <NavigationProperty Name="Retailer" Relationship="Sv_EksamenModel.FK_Product_Retailer" FromRole="Product" ToRole="Retailer" />
+          <NavigationProperty Name="Userlogin" Relationship="Sv_EksamenModel.FK_Product_Userlogin" FromRole="Product" ToRole="Userlogin" />
+        </EntityType>
+        <EntityType Name="Retailer">
+          <Key>
+            <PropertyRef Name="RetailerID" />
+          </Key>
+          <Property Name="RetailerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Retailer" FromRole="Retailer" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Userlogin" Relationship="Sv_EksamenModel.FK_Userlogin_Role" FromRole="Role" ToRole="Userlogin" />
+        </EntityType>
+        <EntityType Name="Userlogin">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Sv_EksamenModel.FK_Product_Userlogin" FromRole="Userlogin" ToRole="Product" />
+          <NavigationProperty Name="Role" Relationship="Sv_EksamenModel.FK_Userlogin_Role" FromRole="Userlogin" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Product_Collection">
+          <End Type="Sv_EksamenModel.Collection" Role="Collection" Multiplicity="0..1" />
+          <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Collection">
+              <PropertyRef Name="CollectionID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CollectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Gender">
+          <End Type="Sv_EksamenModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="GenderID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Retailer">
+          <End Type="Sv_EksamenModel.Retailer" Role="Retailer" Multiplicity="0..1" />
+          <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Retailer">
+              <PropertyRef Name="RetailerID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="RetailerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Userlogin">
+          <End Type="Sv_EksamenModel.Userlogin" Role="Userlogin" Multiplicity="0..1" />
+          <End Type="Sv_EksamenModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userlogin">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Userlogin_Role">
+          <End Type="Sv_EksamenModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="Sv_EksamenModel.Userlogin" Role="Userlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Userlogin">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sv_EksamenModelStoreContainer" CdmEntityContainer="Sv_Eksamen_Entities">
+          <EntitySetMapping Name="Collection">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Collection">
+              <MappingFragment StoreEntitySet="Collection">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CollectionName" ColumnName="CollectionName" />
+                <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="NewsImage" ColumnName="NewsImage" />
+                <ScalarProperty Name="NewsDescription" ColumnName="NewsDescription" />
+                <ScalarProperty Name="NewsName" ColumnName="NewsName" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newsletter">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Newsletter">
+              <MappingFragment StoreEntitySet="Newsletter">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NewsletterID" ColumnName="NewsletterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Retailer">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Retailer">
+              <MappingFragment StoreEntitySet="Retailer">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userlogin">
+            <EntityTypeMapping TypeName="Sv_EksamenModel.Userlogin">
+              <MappingFragment StoreEntitySet="Userlogin">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
