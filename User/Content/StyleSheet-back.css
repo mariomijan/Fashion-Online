@@ -1,0 +1,26 @@
+﻿body {
+}
+
+.LogOffButton {
+    float: right;
+    margin-top: 8px;
+    margin-right: 30px;
+
+}
+
+.Uploads {
+    position: relative;
+    margin-left: 215px;
+
+}
+
+.Insert-cancel-buttons {
+    margin-top: 10px;
+
+}
+
+.btnCreate {
+    float: right;
+    margin-right: -119px;
+}
+
